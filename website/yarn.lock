@@ -8,24 +8,24 @@
   integrity sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==
 
 "@fontsource/montserrat@^5.0.0":
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-5.0.5.tgz#90b5420ab23076a9e76a98516200afcb6ba7de8d"
-  integrity sha512-kR4hwC44p0GZQsy1oA2X8EdFMg/lC7qwVX9jNgNBQ+uSZXKoV4Vyc1VepcRAcGRKPIgcc/3OC1j7FNQDYpFLJA==
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-5.0.7.tgz#7ad531afe95333d7d01fed50c704bcd6d5e5b205"
+  integrity sha512-C8IvPQGiRQz3bdQWPIRXOjFwv6BrpxyZszjwfYXlVQ1v1p6wu50htKcTMZR/MGDoug+9/6sJhz5ZxGP8f7guSw==
 
 "@fontsource/source-code-pro@^5.0.0":
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/@fontsource/source-code-pro/-/source-code-pro-5.0.5.tgz#730475552a40ef74333b690b3ad4426196f7e406"
-  integrity sha512-S56efoSrojdh3F/3CsiiD+dqwjPhpQGlraCV6YSJEFuA0v8YlIGLEesP+Wmv88aYqRn4VgHIe9dtn1TrYkW4Qg==
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/@fontsource/source-code-pro/-/source-code-pro-5.0.7.tgz#6910c6d1506b187592adf1f249695bcfee7662ea"
+  integrity sha512-U26iWcbH2Iaunn5xfQGH2a592Nb5wXQkU8EbBW86P3bP/pa2hQoqhrw1EzXcAmPA+kywdw2iS6+0llVc+z/yVQ==
 
 "@fontsource/spectral@^5.0.0":
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/@fontsource/spectral/-/spectral-5.0.5.tgz#03d3925d29344a26964c9b2a1b74baf62ed472df"
-  integrity sha512-pGYdAZ1NY3SsIozuyXarLbPxZ1+UBcZo6VpIxvhSQRBRphi8RDEkBL4ZcAV5wdZuVMj9zbyYKT0sfNS0oj1mxg==
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/@fontsource/spectral/-/spectral-5.0.7.tgz#f2ca1a3f1e410626786dec5e7cc2d6aba22d0230"
+  integrity sha512-aGNQCTsbGHAmElzkU1ReKmSpZwZ23GkKAEDC+cR+rVHe0P/GNiL86i7BB9F4g/swUzshkm8Sf9rjTAlmZxPm2Q==
 
 "@fortawesome/fontawesome-free@^6.0.0":
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-6.4.0.tgz#1ee0c174e472c84b23cb46c995154dc383e3b4fe"
-  integrity sha512-0NyytTlPJwB/BF5LtRV8rrABDbe3TdTXqNB3PdZ+UUUZAEIrdOJdmABqKjt4AXwIoJNaRVVZEXxpNrqvE1GAYQ==
+  version "6.4.2"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-6.4.2.tgz#36b6a9cb5ffbecdf89815c94d0c0ffa489ac5ecb"
+  integrity sha512-m5cPn3e2+FDCOgi1mz0RexTUvvQibBebOUlUlW0+YrMjDTPkiJ6VTKukA1GRsvRw+12KyJndNjj0O4AgTxm2Pg==
 
 "@jridgewell/gen-mapping@^0.3.2":
   version "0.3.3"
@@ -1084,9 +1084,9 @@ postcss-value-parser@^4.0.0, postcss-value-parser@^4.2.0:
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
 postcss@^8.4.23, postcss@^8.4.4, postcss@^8.4.5:
-  version "8.4.26"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.26.tgz#1bc62ab19f8e1e5463d98cf74af39702a00a9e94"
-  integrity sha512-jrXHFF8iTloAenySjM/ob3gSj7pCu0Ji49hnjqzsgSRa50hkWCKD0HQ+gMNJkW38jBI68MpAAg7ZWwHwX8NMMw==
+  version "8.4.27"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.27.tgz#234d7e4b72e34ba5a92c29636734349e0d9c3057"
+  integrity sha512-gY/ACJtJPSmUFPDCHtX78+01fHa64FaU4zaaWfuh1MhGJISufJAH4cun6k/8fwsHYeK4UQmENQK+tRLCFJE8JQ==
   dependencies:
     nanoid "^3.3.6"
     picocolors "^1.0.0"

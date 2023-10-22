@@ -25,7 +25,7 @@ object Dependencies {
   val Http4sVersion = "0.23.18"
   val Icu4jVersion = "73.2"
   val JavaOtpVersion = "0.4.0"
-  val JsoupVersion = "1.16.1"
+  val JsoupVersion = "1.16.2"
   val JwtScalaVersion = "9.2.0"
   val KindProjectorVersion = "0.10.3"
   val KittensVersion = "3.0.0"
@@ -47,11 +47,11 @@ object Dependencies {
   val Slf4jVersion = "2.0.9"
   val SourcecodeVersion = "0.3.1"
   val StanfordNlpVersion = "4.5.5"
-  val TikaVersion = "2.9.0"
+  val TikaVersion = "2.9.1"
   val YamuscaVersion = "0.10.0"
   val SwaggerUIVersion = "5.9.0"
   val TestContainerVersion = "0.40.14"
-  val TwelveMonkeysVersion = "3.9.4"
+  val TwelveMonkeysVersion = "3.10.0"
   val JQueryVersion = "3.5.1"
 
   val scribe = Seq(

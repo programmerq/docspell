@@ -10,13 +10,12 @@ val elmCompileMode = settingKey[ElmCompileMode]("How to compile elm sources")
 
 val scalafixSettings = Seq(
   semanticdbEnabled := true, // enable SemanticDB
-  semanticdbVersion := scalafixSemanticdb.revision, // "4.4.0"
-  ThisBuild / scalafixDependencies ++= Dependencies.organizeImports
+  semanticdbVersion := scalafixSemanticdb.revision // "4.4.0"
 )
 
 val sharedSettings = Seq(
   organization := "com.github.eikek",
-  scalaVersion := "2.13.10",
+  scalaVersion := "2.13.12",
   organizationName := "Eike K. & Contributors",
   licenses += ("AGPL-3.0-or-later", url(
     "https://spdx.org/licenses/AGPL-3.0-or-later.html"
@@ -802,6 +801,7 @@ val joex = project
         Dependencies.http4sDsl ++
         Dependencies.circe ++
         Dependencies.pureconfig ++
+        Dependencies.pureconfigIp4s ++
         Dependencies.emilTnef ++
         Dependencies.poi ++
         Dependencies.emilMarkdown ++
@@ -859,6 +859,7 @@ val restserver = project
         Dependencies.http4sDsl ++
         Dependencies.circe ++
         Dependencies.pureconfig ++
+        Dependencies.pureconfigIp4s ++
         Dependencies.yamusca ++
         Dependencies.kittens ++
         Dependencies.webjars,

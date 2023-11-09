@@ -8,6 +8,7 @@ package docspell.joex.hk
 
 import cats.effect._
 import cats.implicits._
+import fs2.io.net.Network
 
 import docspell.common._
 import docspell.logging.Logger
@@ -15,11 +16,11 @@ import docspell.scheduler.Task
 import docspell.store.Store
 import docspell.store.records._
 
-import org.http4s.blaze.client.BlazeClientBuilder
 import org.http4s.client.Client
+import org.http4s.ember.client.EmberClientBuilder
 
 object CheckNodesTask {
-  def apply[F[_]: Async](
+  def apply[F[_]: Async: Network](
       cfg: HouseKeepingConfig.CheckNodes,
       store: Store[F]
   ): Task[F, Unit, CleanupResult] =
@@ -27,8 +28,7 @@ object CheckNodesTask {
       if (cfg.enabled)
         for {
           _ <- ctx.logger.info("Check nodes reachability")
-          ec = scala.concurrent.ExecutionContext.global
-          _ <- BlazeClientBuilder[F].withExecutionContext(ec).resource.use { client =>
+          _ <- EmberClientBuilder.default[F].build.use { client =>
             checkNodes(ctx.logger, store, client)
           }
           _ <- ctx.logger.info(

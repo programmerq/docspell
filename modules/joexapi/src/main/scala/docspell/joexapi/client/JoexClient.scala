@@ -8,13 +8,14 @@ package docspell.joexapi.client
 
 import cats.effect._
 import cats.implicits._
+import fs2.io.net.Network
 
 import docspell.common.{Ident, LenientUri}
 import docspell.joexapi.model.{AddonSupport, BasicResult}
 
-import org.http4s.blaze.client.BlazeClientBuilder
 import org.http4s.circe.CirceEntityDecoder
 import org.http4s.client.Client
+import org.http4s.ember.client.EmberClientBuilder
 import org.http4s.{Method, Request, Uri}
 
 trait JoexClient[F[_]] {
@@ -72,6 +73,6 @@ object JoexClient {
         Uri.unsafeFromString(u.asString)
     }
 
-  def resource[F[_]: Async]: Resource[F, JoexClient[F]] =
-    BlazeClientBuilder[F].resource.map(apply[F])
+  def resource[F[_]: Async: Network]: Resource[F, JoexClient[F]] =
+    EmberClientBuilder.default[F].build.map(apply[F])
 }

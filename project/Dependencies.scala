@@ -7,43 +7,42 @@ object Dependencies {
 
   val BcryptVersion = "0.4"
   val BetterMonadicForVersion = "0.3.1"
-  val BinnyVersion = "0.9.1"
+  val BinnyVersion = "0.10.0"
   val CalevVersion = "0.7.0"
   val CatsVersion = "2.7.0"
   val CatsEffectVersion = "3.5.2"
   val CatsParseVersion = "0.3.10"
-  val CirceVersion = "0.14.6"
+  val CirceVersion = "0.15.0-M1"
   val CirceGenericExtrasVersion = "0.14.3"
-  val CirceYamlVersion = "0.14.2"
+  val CirceYamlVersion = "0.15.1"
   val ClipboardJsVersion = "2.0.11"
-  val DoobieVersion = "1.0.0-RC2"
-  val EmilVersion = "0.13.0"
+  val DoobieVersion = "1.0.0-RC4"
+  val EmilVersion = "0.15.0"
   val FlexmarkVersion = "0.64.8"
-  val FlywayVersion = "9.22.3"
-  val Fs2Version = "3.6.1"
+  val FlywayVersion = "10.0.0"
+  val Fs2Version = "3.9.3"
   val H2Version = "2.2.224"
-  val Http4sVersion = "0.23.18"
-  val Icu4jVersion = "73.2"
+  val Http4sVersion = "0.23.23"
+  val Icu4jVersion = "74.1"
   val JavaOtpVersion = "0.4.0"
   val JsoupVersion = "1.16.2"
-  val JwtScalaVersion = "9.2.0"
+  val JwtScalaVersion = "9.4.4"
   val KindProjectorVersion = "0.10.3"
-  val KittensVersion = "3.0.0"
+  val KittensVersion = "3.1.0"
   val LevigoJbig2Version = "2.0"
   val Log4sVersion = "1.10.0"
   val LogbackVersion = "1.2.10"
   val MariaDbVersion = "3.2.0"
   val MUnitVersion = "0.7.29"
   val MUnitCatsEffectVersion = "1.0.7"
-  val OrganizeImportsVersion = "0.6.0"
-  val PdfboxVersion = "2.0.29"
+  val PdfboxVersion = "3.0.0"
   val PdfjsViewerVersion = "2.12.313"
   val PoiVersion = "4.1.2"
   val PostgresVersion = "42.6.0"
   val PureConfigVersion = "0.17.4"
   val ScalaJavaTimeVersion = "2.5.0"
-  val ScodecBitsVersion = "1.1.37"
-  val ScribeVersion = "3.11.9"
+  val ScodecBitsVersion = "1.1.38"
+  val ScribeVersion = "3.12.2"
   val Slf4jVersion = "2.0.9"
   val SourcecodeVersion = "0.3.1"
   val StanfordNlpVersion = "4.5.5"
@@ -51,7 +50,7 @@ object Dependencies {
   val YamuscaVersion = "0.10.0"
   val SwaggerUIVersion = "5.9.0"
   val TestContainerVersion = "0.40.14"
-  val TwelveMonkeysVersion = "3.10.0"
+  val TwelveMonkeysVersion = "3.10.1"
   val JQueryVersion = "3.5.1"
 
   val scribe = Seq(
@@ -220,7 +219,7 @@ object Dependencies {
     "org.apache.tika" % "tika-core" % TikaVersion
   )
   val commonsIO = Seq(
-    "commons-io" % "commons-io" % "2.14.0"
+    "commons-io" % "commons-io" % "2.15.0"
   )
   val tikaParser = Seq(
     "org.apache.tika" % "tika-parsers" % TikaVersion
@@ -239,7 +238,7 @@ object Dependencies {
   val fs2 = fs2Core ++ fs2Io
 
   val http4sClient = Seq(
-    "org.http4s" %% "http4s-blaze-client" % "0.23.14"
+    "org.http4s" %% "http4s-ember-client" % Http4sVersion
   )
 
   val http4sCirce = Seq(
@@ -251,7 +250,7 @@ object Dependencies {
   )
 
   val http4sServer = Seq(
-    "org.http4s" %% "http4s-blaze-server" % "0.23.14"
+    "org.http4s" %% "http4s-ember-server" % Http4sVersion
   )
 
   val circeCore = Seq(
@@ -275,6 +274,10 @@ object Dependencies {
   // MPL 2.0
   val pureconfig = Seq(
     "com.github.pureconfig" %% "pureconfig" % PureConfigVersion
+  )
+
+  val pureconfigIp4s = Seq(
+    "com.github.pureconfig" %% "pureconfig-ip4s" % PureConfigVersion
   )
 
   // https://github.com/h2database/h2database
@@ -308,6 +311,7 @@ object Dependencies {
   // ASL 2.0
   val flyway = Seq(
     "org.flywaydb" % "flyway-core" % FlywayVersion,
+    "org.flywaydb" % "flyway-database-postgresql" % FlywayVersion,
     "org.flywaydb" % "flyway-mysql" % FlywayVersion
   )
 
@@ -338,7 +342,4 @@ object Dependencies {
     "com.ibm.icu" % "icu4j" % Icu4jVersion
   )
 
-  val organizeImports = Seq(
-    "com.github.liancheng" %% "organize-imports" % OrganizeImportsVersion
-  )
 }

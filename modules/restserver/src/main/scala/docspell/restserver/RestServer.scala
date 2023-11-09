@@ -12,6 +12,8 @@ import cats.effect._
 import cats.implicits._
 import fs2.Stream
 import fs2.concurrent.Topic
+import fs2.io.file.Files
+import fs2.io.net.Network
 
 import docspell.backend.msg.Topics
 import docspell.backend.ops.ONode
@@ -24,9 +26,9 @@ import docspell.store.Store
 import docspell.store.records.RInternalSetting
 
 import org.http4s._
-import org.http4s.blaze.client.BlazeClientBuilder
-import org.http4s.blaze.server.BlazeServerBuilder
 import org.http4s.dsl.Http4sDsl
+import org.http4s.ember.client.EmberClientBuilder
+import org.http4s.ember.server.EmberServerBuilder
 import org.http4s.headers.Location
 import org.http4s.implicits._
 import org.http4s.server.Router
@@ -35,7 +37,7 @@ import org.http4s.server.websocket.WebSocketBuilder2
 
 object RestServer {
 
-  def serve[F[_]: Async](
+  def serve[F[_]: Async: Files: Network](
       cfg: Config,
       pools: Pools
   ): F[ExitCode] =
@@ -55,26 +57,25 @@ object RestServer {
           .flatMap { case (restApp, pubSub, setting) =>
             Stream(
               restApp.subscriptions,
-              restApp.eventConsume(2),
-              BlazeServerBuilder[F]
-                .bindHttp(cfg.bind.port, cfg.bind.address)
-                .withoutBanner
-                .withResponseHeaderTimeout(cfg.serverOptions.responseTimeout.toScala)
-                .enableHttp2(cfg.serverOptions.enableHttp2)
-                .withMaxConnections(cfg.serverOptions.maxConnections)
-                .withHttpWebSocketApp(
-                  createHttpApp(setting, pubSub, restApp)
-                )
-                .serve
-                .drain
+              restApp.eventConsume(maxConcurrent = 2),
+              Stream.eval {
+                EmberServerBuilder
+                  .default[F]
+                  .withHost(cfg.bind.address)
+                  .withPort(cfg.bind.port)
+                  .withMaxConnections(cfg.serverOptions.maxConnections)
+                  .withHttpWebSocketApp(createHttpApp(setting, pubSub, restApp))
+                  .toggleHttp2(cfg.serverOptions.enableHttp2)
+                  .build
+                  .useForever
+              }
             )
           }
-
       exit <-
         (server ++ Stream(keepAlive)).parJoinUnbounded.compile.drain.as(ExitCode.Success)
     } yield exit
 
-  def createApp[F[_]: Async](
+  def createApp[F[_]: Async: Files: Network](
       cfg: Config,
       pools: Pools,
       wsTopic: Topic[F, OutputEvent]
@@ -83,7 +84,7 @@ object RestServer {
     (RestApp[F], NaivePubSub[F], RInternalSetting)
   ] =
     for {
-      httpClient <- BlazeClientBuilder[F].resource
+      httpClient <- EmberClientBuilder.default[F].build
       store <- Store.create[F](
         cfg.backend.jdbc,
         cfg.backend.databaseSchema,
@@ -154,5 +155,10 @@ object RestServer {
         headers = Headers(Location(Uri(path = Uri.Path.unsafeFromString(path))))
       ).pure[F]
     }
+  }
+
+  implicit final class EmberServerBuilderExt[F[_]](self: EmberServerBuilder[F]) {
+    def toggleHttp2(flag: Boolean) =
+      if (flag) self.withHttp2 else self.withoutHttp2
   }
 }

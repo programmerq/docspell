@@ -5,7 +5,9 @@ import docspell.addons.out.{AddonOutput, ItemFile, NewFile, NewItem}
 import docspell.addons.out.NewFile.{Meta => FileMeta}
 import docspell.addons.out.NewItem.{Meta => ItemMeta}
 import docspell.common._
+import docspell.common.Timestamp
 import docspell.common.bc.{AttachmentAction, BackendCommand, ItemAction}
+import io.circe.Json
 import io.circe.syntax._
 
 object AddonOutputExample extends Helper {
@@ -15,10 +17,12 @@ object AddonOutputExample extends Helper {
       BackendCommand.ItemUpdate(
         itemId = id("XabZ-item-id"),
         actions = List(
+          ItemAction.SetDate(Timestamp.ofMillis(1699697471000L)),
           ItemAction.AddTags(Set("tag1", "tag2")),
           ItemAction.ReplaceTags(Set("tagX", "tagY")),
           ItemAction.RemoveTags(Set("tag0", "tag9")),
           ItemAction.RemoveTagsCategory(Set("doc-type")),
+          ItemAction.SetDueDate(Some(Timestamp.ofMillis(1707908400000L))),
           ItemAction.SetFolder("folder-name".some),
           ItemAction.SetCorrOrg(id("OaIy-org-ID").some),
           ItemAction.SetCorrPerson(id("OaIy-person-ID").some),
@@ -50,7 +54,8 @@ object AddonOutputExample extends Helper {
             metadata = FileMeta(
               language = Some(Language.English),
               skipDuplicate = Some(true),
-              attachmentsOnly = Some(false)
+              attachmentsOnly = Some(false),
+              customData = None
             ),
             file = "new-file1.docx"
           ),
@@ -58,7 +63,8 @@ object AddonOutputExample extends Helper {
             metadata = FileMeta(
               language = Some(Language.German),
               skipDuplicate = Some(true),
-              attachmentsOnly = Some(false)
+              attachmentsOnly = Some(false),
+              customData = None
             ),
             file = "new-file2.pdf"
           )
@@ -74,7 +80,8 @@ object AddonOutputExample extends Helper {
           source = "the-addon-x".some,
           skipDuplicate = true.some,
           tags = List("tag1", "tag2").some,
-          attachmentsOnly = None
+          attachmentsOnly = None,
+          customData = Some(Json.obj("my-id" -> Json.fromInt(42)))
         ).some,
         files = List("a-file.pdf", "another.jpg")
       )
